@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kajal ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+text-align:center;
+overflow:hidden;
+
+background: radial-gradient(circle at 20% 30%,#3a1c71,#000),
+radial-gradient(circle at 80% 70%,#ff4e50,#000),
+radial-gradient(circle at 50% 50%,#2b5876,#000);
+}
+
+/* pages */
+
+.page{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+/* buttons */
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+}
+
+.next{
+background:white;
+color:#ff2d55;
+}
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+font-size:24px;
+color:#ff4d6d;
+text-shadow:0 0 10px #ff4d6d,0 0 30px #ff4d6d;
+animation:float 7s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh)}
+}
+
+/* typing */
+
+#typing{
+font-size:22px;
+max-width:420px;
+min-height:120px;
+}
+
+/* images */
+
+img{
+width:260px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(255,255,255,0.5);
+margin-bottom:20px;
+}
+
+/* slideshow */
+
+.slide{
+width:260px;
+}
+
+/* mini game */
+
+#gameHeart{
+font-size:60px;
+cursor:pointer;
+position:absolute;
+}
+
+/* input */
+
+input{
+padding:12px;
+font-size:18px;
+border-radius:8px;
+border:none;
+}
+
+#emotions{
+max-width:400px;
+margin-top:20px;
+font-size:20px;
+color:#ffd6d6;
+}
+
+/* love animation page */
+
+.loveText{
+font-size:26px;
+max-width:450px;
+line-height:1.6;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px pink}
+to{text-shadow:0 0 30px red}
+}
+
+/* ring */
+
+#ring{
+width:120px;
+opacity:0;
+transform:scale(0);
+transition:1s;
+}
+
+.showRing{
+opacity:1;
+transform:scale(1.4);
+}
+
+/* fireworks */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="p1">
+<h1>Hey Kajal ❤️</h1>
+<p>I made something special for you...</p>
+<button onclick="start()">Start Surprise</button>
+</div>
+
+<!-- PAGE 2 STORY -->
+
+<div class="page" id="p2">
+<h2>Our Story</h2>
+<div id="typing"></div>
+<button class="next" onclick="next(3)">Next</button>
+</div>
+
+<!-- PAGE 3 SLIDESHOW -->
+
+<div class="page" id="p3">
+<h2>Our Memories ❤️</h2>
+<img id="slide" class="slide" src="photo1.jpg">
+<button class="next" onclick="next(4)">Next</button>
+</div>
+
+<!-- PAGE 4 HUG PHOTO -->
+
+<div class="page" id="p4">
+<img src="hug.jpg">
+<h2>This moment means everything to me ❤️</h2>
+<button class="next" onclick="next(5)">Next</button>
+</div>
+
+<!-- PAGE 5 MINI GAME -->
+
+<div class="page" id="p5">
+<h2>Catch the heart 5 times ❤️</h2>
+<div id="gameHeart">❤️</div>
+<p id="score">Score: 0</p>
+</div>
+
+<!-- PAGE 6 TYPE YES -->
+
+<div class="page" id="p6">
+<h2>Type YES or NO</h2>
+<input id="answer" placeholder="type here">
+<button onclick="checkAnswer()">Submit</button>
+<div id="emotions"></div>
+</div>
+
+<!-- PAGE 7 LOVE MESSAGE -->
+
+<div class="page" id="p7">
+<div class="loveText">
+Love is not about perfect moments... ❤️ <br><br>
+It is about finding someone who makes your world brighter every day. <br><br>
+And for me... that person is you Kajal 💖
+</div>
+<button class="next" onclick="next(8)">Next</button>
+</div>
+
+<!-- PAGE 8 FINAL -->
+
+<div class="page" id="p8">
+<h1>Will you be mine forever? 💍</h1>
+<img id="ring" src="ring.png">
+<button onclick="yes()">YES ❤️</button>
+</div>
+
+<canvas id="fire"></canvas>
+
+<script>
+
+/* start */
+
+function start(){
+document.getElementById("music").play();
+next(2);
+}
+
+/* page change */
+
+function next(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById("p"+n).classList.add("active");
+}
+
+/* typing story */
+
+let text="From the moment I met you, everything in my life became brighter. Your smile makes my world magical and I want to spend every moment with you ❤️";
+
+let i=0;
+
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,40);
+}
+}
+
+type();
+
+/* slideshow */
+
+let photos=["photo1.jpg","photo2.jpg","photo3.jpg"];
+let index=0;
+
+setInterval(()=>{
+index=(index+1)%photos.length;
+document.getElementById("slide").src=photos[index];
+},2000);
+
+/* floating hearts */
+
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),7000);
+},400);
+
+/* mini game */
+
+let heart=document.getElementById("gameHeart");
+let score=0;
+
+function moveHeart(){
+heart.style.left=Math.random()*80+"vw";
+heart.style.top=Math.random()*80+"vh";
+}
+
+heart.onclick=function(){
+score++;
+document.getElementById("score").innerHTML="Score: "+score;
+moveHeart();
+if(score>=5){
+next(6);
+}
+}
+
+moveHeart();
+
+/* emotional messages */
+
+let msgs=[
+"I can't live without you...",
+"Please don't say no...",
+"My heart belongs to you...",
+"You are my happiness...",
+"I really love you..."
+];
+
+function checkAnswer(){
+
+let ans=document.getElementById("answer").value.toLowerCase();
+
+if(ans==="yes"){
+next(7);
+}else{
+let m=msgs[Math.floor(Math.random()*msgs.length)];
+document.getElementById("emotions").innerHTML+=m+"<br>";
+}
+
+}
+
+/* ring + fireworks */
+
+function yes(){
+document.getElementById("ring").classList.add("showRing");
+startFireworks();
+}
+
+/* fireworks */
+
+let canvas=document.getElementById("fire");
+let ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+function startFireworks(){
+
+setInterval(()=>{
+
+for(let i=0;i<150;i++){
+
+particles.push({
+x:canvas.width/2,
+y:canvas.height/2,
+vx:(Math.random()-0.5)*12,
+vy:(Math.random()-0.5)*12,
+life:120
+});
+
+}
+
+},600);
+
+animate();
+
+}
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.vx;
+p.y+=p.vy;
+p.life--;
+
+ctx.fillStyle="white";
+ctx.fillRect(p.x,p.y,3,3);
+
+});
+
+particles=particles.filter(p=>p.life>0);
+
+}
+
+</script>
+
+</body>
+</html>
