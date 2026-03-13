@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Kajal ❤️</title>
 
 <style>
@@ -19,8 +20,6 @@ radial-gradient(circle at 80% 70%,#ff4e50,#000),
 radial-gradient(circle at 50% 50%,#2b5876,#000);
 }
 
-/* pages */
-
 .page{
 display:none;
 height:100vh;
@@ -33,8 +32,6 @@ padding:20px;
 .active{
 display:flex;
 }
-
-/* buttons */
 
 button{
 padding:14px 28px;
@@ -50,7 +47,16 @@ background:white;
 color:#ff2d55;
 }
 
-/* floating hearts */
+img{
+width:260px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(255,255,255,0.5);
+margin-bottom:20px;
+}
+
+.slide{
+width:260px;
+}
 
 .heart{
 position:absolute;
@@ -65,38 +71,17 @@ animation:float 7s linear infinite;
 100%{transform:translateY(-10vh)}
 }
 
-/* typing */
-
 #typing{
 font-size:22px;
 max-width:420px;
 min-height:120px;
 }
 
-/* images */
-
-img{
-width:260px;
-border-radius:15px;
-box-shadow:0 0 20px rgba(255,255,255,0.5);
-margin-bottom:20px;
-}
-
-/* slideshow */
-
-.slide{
-width:260px;
-}
-
-/* mini game */
-
 #gameHeart{
 font-size:60px;
 cursor:pointer;
 position:absolute;
 }
-
-/* input */
 
 input{
 padding:12px;
@@ -112,8 +97,6 @@ font-size:20px;
 color:#ffd6d6;
 }
 
-/* love animation page */
-
 .loveText{
 font-size:26px;
 max-width:450px;
@@ -126,8 +109,6 @@ from{text-shadow:0 0 10px pink}
 to{text-shadow:0 0 30px red}
 }
 
-/* ring */
-
 #ring{
 width:120px;
 opacity:0;
@@ -139,8 +120,6 @@ transition:1s;
 opacity:1;
 transform:scale(1.4);
 }
-
-/* fireworks */
 
 canvas{
 position:fixed;
@@ -166,7 +145,7 @@ pointer-events:none;
 <button onclick="start()">Start Surprise</button>
 </div>
 
-<!-- PAGE 2 STORY -->
+<!-- PAGE 2 -->
 
 <div class="page" id="p2">
 <h2>Our Story</h2>
@@ -178,19 +157,19 @@ pointer-events:none;
 
 <div class="page" id="p3">
 <h2>Our Memories ❤️</h2>
-<img id="slide" class="slide" src="photo1.jpg">
+<img id="slide" class="slide" src="photo1.jpeg">
 <button class="next" onclick="next(4)">Next</button>
 </div>
 
 <!-- PAGE 4 HUG PHOTO -->
 
 <div class="page" id="p4">
-<img src="hug.jpg">
+<img src="hug.jpeg">
 <h2>This moment means everything to me ❤️</h2>
 <button class="next" onclick="next(5)">Next</button>
 </div>
 
-<!-- PAGE 5 MINI GAME -->
+<!-- PAGE 5 GAME -->
 
 <div class="page" id="p5">
 <h2>Catch the heart 5 times ❤️</h2>
@@ -218,11 +197,31 @@ And for me... that person is you Kajal 💖
 <button class="next" onclick="next(8)">Next</button>
 </div>
 
-<!-- PAGE 8 FINAL -->
+<!-- PAGE 8 BIRTHDAY PAGE -->
 
 <div class="page" id="p8">
+
+<h1>🎂 Happy Birthday Kajal 🎂</h1>
+
+<div class="loveText">
+On this beautiful day I just want to say... ❤️ <br><br>
+
+You are the most precious part of my life.  
+Your smile makes every moment brighter.  
+
+I hope this birthday brings you  
+as much happiness as you bring into my life. 💖
+</div>
+
+<button class="next" onclick="next(9)">Next</button>
+
+</div>
+
+<!-- PAGE 9 FINAL PROPOSAL -->
+
+<div class="page" id="p9">
 <h1>Will you be mine forever? 💍</h1>
-<img id="ring" src="ring.png">
+<img id="ring" src="ring.avif">
 <button onclick="yes()">YES ❤️</button>
 </div>
 
@@ -230,23 +229,17 @@ And for me... that person is you Kajal 💖
 
 <script>
 
-/* start */
-
 function start(){
 document.getElementById("music").play();
 next(2);
 }
-
-/* page change */
 
 function next(n){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById("p"+n).classList.add("active");
 }
 
-/* typing story */
-
-let text="We’ve walked side-by-side as friends for years, but these last few months have shown me what I was truly missing. Seeing you as my partner has turned my world into something magical, and I don't want to spend a single moment without you. It took us a while to get here, but now that I finally have you, I’m never letting go. I can’t wait to see where this new chapter takes us.❤️";
+let text="From the moment I met you, everything in my life became brighter. Your smile makes my world magical and I want to spend every moment with you ❤️";
 
 let i=0;
 
@@ -260,17 +253,13 @@ setTimeout(type,40);
 
 type();
 
-/* slideshow */
-
-let photos=["photo1.jpg","photo2.jpg","photo3.jpg"];
+let photos=["photo1.jpeg","photo2.jpeg","photo3.jpeg"];
 let index=0;
 
 setInterval(()=>{
 index=(index+1)%photos.length;
 document.getElementById("slide").src=photos[index];
 },2000);
-
-/* floating hearts */
 
 setInterval(()=>{
 let heart=document.createElement("div");
@@ -280,8 +269,6 @@ heart.style.left=Math.random()*100+"vw";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),7000);
 },400);
-
-/* mini game */
 
 let heart=document.getElementById("gameHeart");
 let score=0;
@@ -301,8 +288,6 @@ next(6);
 }
 
 moveHeart();
-
-/* emotional messages */
 
 let msgs=[
 "I can't live without you...",
@@ -325,14 +310,10 @@ document.getElementById("emotions").innerHTML+=m+"<br>";
 
 }
 
-/* ring + fireworks */
-
 function yes(){
 document.getElementById("ring").classList.add("showRing");
 startFireworks();
 }
-
-/* fireworks */
 
 let canvas=document.getElementById("fire");
 let ctx=canvas.getContext("2d");
@@ -387,5 +368,4 @@ particles=particles.filter(p=>p.life>0);
 </script>
 
 </body>
-
 </html>
