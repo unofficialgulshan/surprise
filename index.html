@@ -20,6 +20,8 @@ radial-gradient(circle at 80% 70%,#ff4e50,#000),
 radial-gradient(circle at 50% 50%,#2b5876,#000);
 }
 
+/* pages */
+
 .page{
 display:none;
 height:100vh;
@@ -32,6 +34,8 @@ padding:20px;
 .active{
 display:flex;
 }
+
+/* buttons */
 
 button{
 padding:14px 28px;
@@ -47,23 +51,42 @@ background:white;
 color:#ff2d55;
 }
 
+/* images */
+
 img{
 width:260px;
 border-radius:15px;
 box-shadow:0 0 20px rgba(255,255,255,0.5);
-margin-bottom:20px;
 }
+
+/* slideshow */
 
 .slide{
 width:260px;
 }
 
+/* blinking hearts */
+
 .heart{
 position:absolute;
-font-size:24px;
+font-size:18px;
+color:pink;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+0%{opacity:0}
+50%{opacity:1}
+100%{opacity:0}
+}
+
+/* big hearts */
+
+.bigHeart{
+position:absolute;
+font-size:60px;
 color:#ff4d6d;
-text-shadow:0 0 10px #ff4d6d,0 0 30px #ff4d6d;
-animation:float 7s linear infinite;
+animation:float 6s linear infinite;
 }
 
 @keyframes float{
@@ -71,43 +94,41 @@ animation:float 7s linear infinite;
 100%{transform:translateY(-10vh)}
 }
 
+/* typing story */
+
 #typing{
 font-size:22px;
-max-width:420px;
-min-height:120px;
+max-width:500px;
+min-height:150px;
+line-height:1.6;
 }
 
+/* mini game */
+
 #gameHeart{
-font-size:60px;
+font-size:70px;
 cursor:pointer;
 position:absolute;
 }
+
+/* input */
 
 input{
 padding:12px;
 font-size:18px;
 border-radius:8px;
 border:none;
+width:250px;
 }
 
 #emotions{
-max-width:400px;
 margin-top:20px;
 font-size:20px;
 color:#ffd6d6;
+max-width:500px;
 }
 
-.loveText{
-font-size:26px;
-max-width:450px;
-line-height:1.6;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px pink}
-to{text-shadow:0 0 30px red}
-}
+/* proposal ring */
 
 #ring{
 width:120px;
@@ -118,8 +139,10 @@ transition:1s;
 
 .showRing{
 opacity:1;
-transform:scale(1.4);
+transform:scale(1.5);
 }
+
+/* fireworks */
 
 canvas{
 position:fixed;
@@ -145,156 +168,224 @@ pointer-events:none;
 <button onclick="start()">Start Surprise</button>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 STORY -->
 
 <div class="page" id="p2">
+
 <h2>Our Story</h2>
+
 <div id="typing"></div>
+
 <button class="next" onclick="next(3)">Next</button>
+
 </div>
 
-<!-- PAGE 3 SLIDESHOW -->
+<!-- PAGE 3 MEMORIES -->
 
 <div class="page" id="p3">
+
 <h2>Our Memories ❤️</h2>
+
 <img id="slide" class="slide" src="photo1.jpeg">
+
 <button class="next" onclick="next(4)">Next</button>
+
 </div>
 
-<!-- PAGE 4 HUG PHOTO -->
+<!-- PAGE 4 PHOTO -->
 
 <div class="page" id="p4">
+
 <img src="hug.jpeg">
+
 <h2>This moment means everything to me ❤️</h2>
+
 <button class="next" onclick="next(5)">Next</button>
+
 </div>
 
 <!-- PAGE 5 GAME -->
 
 <div class="page" id="p5">
-<h2>Catch the heart 5 times ❤️</h2>
-<div id="gameHeart">❤️</div>
-<p id="score">Score: 0</p>
+
+<h2>Catch the heart ❤️</h2>
+
+<p>Every time you catch it, my love for you grows stronger 💗</p>
+
+<div id="gameHeart">💗</div>
+
+<p id="score">Hearts collected: 0 / 5</p>
+
 </div>
 
-<!-- PAGE 6 TYPE YES -->
+<!-- PAGE 6 QUESTION -->
 
 <div class="page" id="p6">
-<h2>Type YES or NO</h2>
-<input id="answer" placeholder="type here">
+
+<h2>A question from my heart ❤️</h2>
+
+<p>Do you believe our love is meant to last forever?</p>
+
+<input id="answer" placeholder="type yes or no">
+
 <button onclick="checkAnswer()">Submit</button>
+
 <div id="emotions"></div>
+
 </div>
 
-<!-- PAGE 7 LOVE MESSAGE -->
+<!-- PAGE 7 BIRTHDAY -->
 
 <div class="page" id="p7">
-<div class="loveText">
-Love is not about perfect moments... ❤️ <br><br>
-It is about finding someone who makes your world brighter every day. <br><br>
-And for me... that person is you Kajal 💖
-</div>
-<button class="next" onclick="next(8)">Next</button>
-</div>
-
-<!-- PAGE 8 BIRTHDAY PAGE -->
-
-<div class="page" id="p8">
 
 <h1>🎂 Happy Birthday Kajal 🎂</h1>
 
-<div class="loveText">
-On this beautiful day I just want to say... ❤️ <br><br>
+<p style="max-width:500px;font-size:22px">
 
-You are the most precious part of my life.  
-Your smile makes every moment brighter.  
+You are the most beautiful part of my life.  
+Your smile brightens every moment.  
 
-I hope this birthday brings you  
-as much happiness as you bring into my life. 💖
+I hope this birthday brings you as much happiness  
+as you bring into my world every day. ❤️
+
+</p>
+
+<button class="next" onclick="next(8)">Next</button>
+
 </div>
 
-<button class="next" onclick="next(9)">Next</button>
+<!-- PAGE 8 FINAL PROPOSAL -->
 
-</div>
+<div class="page" id="p8">
 
-<!-- PAGE 9 FINAL PROPOSAL -->
-
-<div class="page" id="p9">
 <h1>Will you be mine forever? 💍</h1>
+
 <img id="ring" src="ring.avif">
+
 <button onclick="yes()">YES ❤️</button>
+
 </div>
 
 <canvas id="fire"></canvas>
 
 <script>
 
+/* start */
+
 function start(){
 document.getElementById("music").play();
 next(2);
 }
+
+/* page change */
 
 function next(n){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById("p"+n).classList.add("active");
 }
 
-let text="From the moment I met you, everything in my life became brighter. Your smile makes my world magical and I want to spend every moment with you ❤️";
+/* romantic typing story */
+
+let text="We’ve walked side-by-side as friends for years, but these last few months have shown me what I was truly missing. Seeing you as my partner has turned my world into something magical, and I don't want to spend a single moment without you. It took us a while to get here, but now that I finally have you, I’m never letting go. I can’t wait to see where this new chapter takes us. ❤️";
 
 let i=0;
 
 function type(){
+
 if(i<text.length){
+
 document.getElementById("typing").innerHTML+=text.charAt(i);
+
 i++;
+
 setTimeout(type,40);
+
 }
+
 }
 
 type();
 
+/* slideshow */
+
 let photos=["photo1.jpeg","photo2.jpeg","photo3.jpeg"];
+
 let index=0;
 
 setInterval(()=>{
+
 index=(index+1)%photos.length;
+
 document.getElementById("slide").src=photos[index];
-},2000);
+
+},2500);
+
+/* blinking hearts background */
 
 setInterval(()=>{
+
 let heart=document.createElement("div");
+
 heart.className="heart";
-heart.innerHTML="❤️";
+
+heart.innerHTML="💗";
+
 heart.style.left=Math.random()*100+"vw";
+
+heart.style.top=Math.random()*100+"vh";
+
 document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),7000);
-},400);
+
+setTimeout(()=>heart.remove(),2000);
+
+},200);
+
+/* mini game */
 
 let heart=document.getElementById("gameHeart");
+
 let score=0;
 
 function moveHeart(){
+
 heart.style.left=Math.random()*80+"vw";
+
 heart.style.top=Math.random()*80+"vh";
+
 }
 
 heart.onclick=function(){
+
 score++;
-document.getElementById("score").innerHTML="Score: "+score;
+
+document.getElementById("score").innerHTML="Hearts collected: "+score+" / 5";
+
 moveHeart();
+
 if(score>=5){
+
 next(6);
+
 }
+
 }
 
 moveHeart();
+
+/* emotional messages */
 
 let msgs=[
-"I can't live without you...",
-"Please don't say no...",
-"My heart belongs to you...",
-"You are my happiness...",
-"I really love you..."
+
+"Please don't say no... my heart truly belongs to you.",
+
+"I can't imagine my life without you.",
+
+"You are the reason my world feels complete.",
+
+"My love for you grows stronger every day.",
+
+"Please believe in our love ❤️"
+
 ];
 
 function checkAnswer(){
@@ -302,23 +393,61 @@ function checkAnswer(){
 let ans=document.getElementById("answer").value.toLowerCase();
 
 if(ans==="yes"){
+
 next(7);
+
 }else{
+
 let m=msgs[Math.floor(Math.random()*msgs.length)];
+
 document.getElementById("emotions").innerHTML+=m+"<br>";
+
 }
 
 }
+
+/* proposal */
 
 function yes(){
+
 document.getElementById("ring").classList.add("showRing");
+
 startFireworks();
+
+bigHearts();
+
 }
 
+/* big hearts animation */
+
+function bigHearts(){
+
+setInterval(()=>{
+
+let h=document.createElement("div");
+
+h.className="bigHeart";
+
+h.innerHTML="💗";
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),6000);
+
+},300);
+
+}
+
+/* fireworks */
+
 let canvas=document.getElementById("fire");
+
 let ctx=canvas.getContext("2d");
 
 canvas.width=window.innerWidth;
+
 canvas.height=window.innerHeight;
 
 let particles=[];
@@ -327,14 +456,20 @@ function startFireworks(){
 
 setInterval(()=>{
 
-for(let i=0;i<150;i++){
+for(let i=0;i<120;i++){
 
 particles.push({
+
 x:canvas.width/2,
+
 y:canvas.height/2,
-vx:(Math.random()-0.5)*12,
-vy:(Math.random()-0.5)*12,
-life:120
+
+vx:(Math.random()-0.5)*10,
+
+vy:(Math.random()-0.5)*10,
+
+life:100
+
 });
 
 }
@@ -352,11 +487,15 @@ requestAnimationFrame(animate);
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
 particles.forEach(p=>{
+
 p.x+=p.vx;
+
 p.y+=p.vy;
+
 p.life--;
 
-ctx.fillStyle="white";
+ctx.fillStyle="pink";
+
 ctx.fillRect(p.x,p.y,3,3);
 
 });
