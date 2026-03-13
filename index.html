@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>For Kajal ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -42,17 +45,29 @@ background:white;
 color:#ff2d55;
 }
 
-img{
-width:260px;
+/* slideshow images */
+
+.slide{
+max-width:80vw;
+max-height:70vh;
 border-radius:15px;
-box-shadow:0 0 20px rgba(255,255,255,0.7);
+box-shadow:0 0 25px rgba(255,255,255,0.8);
+}
+
+.hug{
+max-width:60vw;
+max-height:60vh;
+border-radius:15px;
+box-shadow:0 0 25px rgba(255,255,255,0.8);
 }
 
 #typing{
-max-width:520px;
+max-width:600px;
 font-size:22px;
 line-height:1.6;
 }
+
+/* floating hearts */
 
 .bgHeart{
 position:absolute;
@@ -66,6 +81,8 @@ animation:blink 2s infinite;
 100%{opacity:0}
 }
 
+/* floating romantic message */
+
 .loveText{
 position:absolute;
 font-size:20px;
@@ -78,27 +95,55 @@ animation:floatUp 2s forwards;
 100%{opacity:0; transform:translateY(-80px)}
 }
 
+/* heart game */
+
 .gameHeart{
 position:absolute;
 font-size:60px;
 cursor:pointer;
+text-shadow:0 0 20px pink;
+animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.25)}
+100%{transform:scale(1)}
 }
 
 #proposal{
-font-size:36px;
+font-size:38px;
 color:#ffb3d9;
 }
 
-#cry{
-font-size:60px;
-margin-top:20px;
+#loveTextFinal{
+position:absolute;
+top:40%;
+width:100%;
+font-size:70px;
+font-family:'Great Vibes', cursive;
+color:pink;
+text-shadow:0 0 20px white,0 0 40px pink;
 }
 
 canvas{
 position:fixed;
 top:0;
 left:0;
-pointer-events:none;
+}
+
+/* birthday card */
+
+.birthdayCard{
+max-width:650px;
+max-height:65vh;
+overflow:auto;
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,0.08);
+box-shadow:0 0 25px rgba(255,182,193,0.7);
+font-size:20px;
+line-height:1.7;
 }
 
 </style>
@@ -118,120 +163,111 @@ pointer-events:none;
 <button onclick="start()">Start Surprise</button>
 </div>
 
-<!-- PAGE 2 PASSWORD -->
+<!-- PASSWORD -->
 
 <div class="page" id="p2">
-
 <h2>Enter the secret password 🔐</h2>
-
-<p>Hint: something I call you</p>
-
-<input id="pass">
-
+<input type="password" id="pass">
 <button onclick="checkPass()">Unlock</button>
-
 <p id="passMsg"></p>
-
 </div>
 
-<!-- PAGE 3 STORY -->
+<!-- STORY -->
 
 <div class="page" id="p3">
-
 <h2>Our Story ❤️</h2>
-
 <div id="typing"></div>
-
 <button onclick="next(4)">Next</button>
-
 </div>
 
-<!-- PAGE 4 SLIDESHOW -->
+<!-- MEMORIES -->
 
 <div class="page" id="p4">
-
 <h2>Our Memories</h2>
-
-<img id="slide" src="photo1.jpeg">
-
+<img id="slide" class="slide" src="photo1.jpeg">
 <button onclick="next(5)">Next</button>
-
 </div>
 
-<!-- PAGE 5 HUG -->
+<!-- HUG -->
 
 <div class="page" id="p5">
+<img src="hug.jpeg" class="hug">
 
-<img src="hug.jpeg">
-
-<p style="max-width:520px;font-size:20px">
-
+<p style="max-width:600px;font-size:20px">
 This was the moment I stopped looking for 'the one' and started realizing I’d already found you.  
 A single frame that holds the beginning of my favorite forever.  
 This moment was a lot to me ❤️
-
 </p>
 
 <button onclick="next(6)">Next</button>
-
 </div>
 
-<!-- PAGE 6 HEART GAME -->
+<!-- HEART GAME -->
 
 <div class="page" id="p6">
-
 <h2>Catch My Love Hearts 💗</h2>
-
+<p>Every heart hides a message for you</p>
 <p id="score">0 / 8</p>
-
 </div>
 
-<!-- PAGE 7 BIRTHDAY -->
+<!-- BIRTHDAY PAGE (UPDATED) -->
 
 <div class="page" id="p7">
 
-<h1>🎂 Happy Birthday Kajal 🎂</h1>
+<h1 style="font-family:Great Vibes;font-size:55px;color:#ffd1dc;text-shadow:0 0 20px pink">
+🎂 Happy Birthday Kajal 🎂
+</h1>
 
-<p style="max-width:500px;font-size:22px">
+<div class="birthdayCard">
 
-You are the most beautiful part of my life.  
-Your smile brightens every moment.  
-
-I hope this birthday brings you as much happiness  
-as you bring into my world every day. ❤️
-
+<p>
+Happy Birthday to the woman who was in my life for years, but has recently become my entire world.
 </p>
+
+<p>
+These last few months of finally being yours have been the most beautiful journey of my life.
+Through every laugh and every disagreement we've faced, I’ve watched our bond grow stronger day by day.
+</p>
+
+<p>
+Even when we fight or find ourselves miles apart, it only proves that nothing can shake what we have—
+because at the end of every day, you are still my peace, my person, and my greatest love.
+</p>
+
+<p>
+I’m counting down every second until the distance disappears and I can hold you in my arms again.
+</p>
+
+<p style="color:#ffb6c1;font-size:22px">
+Have the most beautiful day, my love! 🌹✨
+</p>
+
+</div>
 
 <button onclick="next(8)">Next</button>
 
 </div>
 
-<!-- PAGE 8 QUESTION -->
+<!-- QUESTION -->
 
 <div class="page" id="p8">
-
 <h2>A Question From My Heart ❤️</h2>
-
 <p>Do you believe our love is meant forever?</p>
 
-<button onclick="answerYes()">YES ❤️</button>
-<button onclick="answerNo()">NO 🙈</button>
+<button onclick="next(9)">YES ❤️</button>
+<button onclick="showEmotion()">NO 🙈</button>
 
 <p id="emotion"></p>
-
 </div>
 
-<!-- PAGE 9 FINAL -->
+<!-- FINAL PROPOSAL -->
 
 <div class="page" id="p9">
 
 <h1 id="proposal">Will you be mine forever? 💗</h1>
 
 <button onclick="yes()">YES ❤️</button>
-<button onclick="no()">NO 🙈</button>
-
-<div id="cry"></div>
-<p id="sadText"></p>
+<button id="noBtn" onmouseover="runAway()">NO 🙈</button>
 
 </div>
 
@@ -262,14 +298,14 @@ let p=document.getElementById("pass").value;
 if(p==="mygoli"){
 next(3);
 }else{
-document.getElementById("passMsg").innerHTML="Wrong password ❤️ try again";
+document.getElementById("passMsg").innerHTML="Wrong password ❤️";
 }
 
 }
 
 /* typing story */
 
-let text="We’ve walked side-by-side as friends for years, but these last few months have shown me what I was truly missing. Seeing you as my partner has turned my world into something magical. I don't want a life where you aren't beside me.";
+let text="We’ve walked side-by-side as friends for years, but these last few months have shown me what I was truly missing. Seeing you as my partner has turned my world into something magical.";
 
 let i=0;
 
@@ -297,28 +333,36 @@ index=(index+1)%photos.length;
 document.getElementById("slide").src=photos[index];
 },2500);
 
-/* hearts background */
+/* background hearts */
 
 setInterval(()=>{
+
 let h=document.createElement("div");
+
 h.className="bgHeart";
+
 h.innerHTML="💗";
+
 h.style.left=Math.random()*100+"vw";
 h.style.top=Math.random()*100+"vh";
+
 document.body.appendChild(h);
+
 setTimeout(()=>h.remove(),2000);
+
 },200);
 
-/* heart game */
+/* HEART GAME */
 
 let score=0;
 
 let loveMsgs=[
-"You make my world beautiful ❤️",
-"My heart beats for you 💓",
-"You are my happiness",
+"You make my world brighter ❤️",
+"My heart always chooses you 💖",
+"You are my favorite person",
+"I fall for you every day",
 "You are my forever",
-"You complete my world"
+"You are everything to me ❤️"
 ];
 
 function startGame(){
@@ -328,7 +372,9 @@ spawnHeart();
 function spawnHeart(){
 
 let heart=document.createElement("div");
+
 heart.className="gameHeart";
+
 heart.innerHTML="💗";
 
 heart.style.left=Math.random()*80+"vw";
@@ -337,16 +383,30 @@ heart.style.top=Math.random()*70+"vh";
 heart.onclick=function(){
 
 score++;
+
 document.getElementById("score").innerHTML=score+" / 8";
 
-showLove(heart);
+let msg=document.createElement("div");
 
-heart.remove();
+msg.className="loveText";
+
+msg.innerHTML=loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
+
+msg.style.left=heart.style.left;
+msg.style.top=heart.style.top;
+
+document.body.appendChild(msg);
+
+setTimeout(()=>msg.remove(),2000);
+
+heart.innerHTML="✨💗✨";
+
+setTimeout(()=>heart.remove(),200);
 
 if(score>=8){
-setTimeout(()=>next(7),1000);
+setTimeout(()=>next(7),1200);
 }else{
-spawnHeart();
+setTimeout(spawnHeart,400);
 }
 
 };
@@ -355,31 +415,9 @@ document.body.appendChild(heart);
 
 }
 
-function showLove(heart){
+/* question emotion */
 
-let msg=loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
-
-let text=document.createElement("div");
-text.className="loveText";
-
-text.innerHTML=msg;
-
-text.style.left=heart.style.left;
-text.style.top=heart.style.top;
-
-document.body.appendChild(text);
-
-setTimeout(()=>text.remove(),2000);
-
-}
-
-/* question page */
-
-function answerYes(){
-next(9);
-}
-
-function answerNo(){
+function showEmotion(){
 
 let msgs=[
 "Our story deserves forever ❤️",
@@ -393,41 +431,20 @@ document.getElementById("emotion").innerHTML+=m+"<br>";
 
 }
 
-/* NO drama */
+/* run away button */
 
-let cryLevel=0;
+function runAway(){
 
-function no(){
+let btn=document.getElementById("noBtn");
 
-cryLevel++;
+btn.style.position="absolute";
 
-let cry=document.getElementById("cry");
-let text=document.getElementById("sadText");
-
-if(cryLevel==1){
-
-cry.innerHTML="😢";
-text.innerHTML="That hurts...";
+btn.style.left=Math.random()*80+"vw";
+btn.style.top=Math.random()*70+"vh";
 
 }
 
-else if(cryLevel==2){
-
-cry.innerHTML="😭";
-text.innerHTML="Please don't break my heart";
-
-}
-
-else{
-
-cry.innerHTML="😭😭😭";
-text.innerHTML="Please Kajal... my heart truly belongs to you ❤️";
-
-}
-
-}
-
-/* YES ending */
+/* fireworks */
 
 function yes(){
 
@@ -437,11 +454,10 @@ startFireworks();
 
 }
 
-/* fireworks */
-
 function startFireworks(){
 
 let canvas=document.getElementById("fire");
+
 let ctx=canvas.getContext("2d");
 
 canvas.width=window.innerWidth;
@@ -491,18 +507,13 @@ animate();
 
 setTimeout(()=>{
 
-let text=document.createElement("div");
+let t=document.createElement("div");
 
-text.style.position="absolute";
-text.style.top="40%";
-text.style.width="100%";
-text.style.fontSize="60px";
-text.style.color="pink";
-text.style.textShadow="0 0 20px white";
+t.id="loveTextFinal";
 
-text.innerHTML="I LOVE YOU KAJAL ❤️";
+t.innerHTML="I LOVE YOU KAJAL ❤️";
 
-document.body.appendChild(text);
+document.body.appendChild(t);
 
 },2000);
 
