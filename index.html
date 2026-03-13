@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For Kajal ❤️</title>
 
 <style>
@@ -20,8 +18,6 @@ radial-gradient(circle at 80% 70%,#ff4e50,#000),
 radial-gradient(circle at 50% 50%,#2b5876,#000);
 }
 
-/* pages */
-
 .page{
 display:none;
 height:100vh;
@@ -35,42 +31,32 @@ padding:20px;
 display:flex;
 }
 
-/* buttons */
-
 button{
-padding:14px 28px;
+padding:14px 30px;
 font-size:18px;
 border:none;
 border-radius:10px;
 margin:10px;
 cursor:pointer;
-}
-
-.next{
 background:white;
 color:#ff2d55;
 }
 
-/* images */
-
 img{
 width:260px;
 border-radius:15px;
-box-shadow:0 0 20px rgba(255,255,255,0.5);
+box-shadow:0 0 20px rgba(255,255,255,0.7);
 }
 
-/* slideshow */
-
-.slide{
-width:260px;
+#typing{
+max-width:520px;
+font-size:22px;
+line-height:1.6;
 }
 
-/* blinking hearts */
-
-.heart{
+.bgHeart{
 position:absolute;
 font-size:18px;
-color:pink;
 animation:blink 2s infinite;
 }
 
@@ -80,69 +66,33 @@ animation:blink 2s infinite;
 100%{opacity:0}
 }
 
-/* big hearts */
+.loveText{
+position:absolute;
+font-size:20px;
+color:#ffd6f5;
+animation:floatUp 2s forwards;
+}
 
-.bigHeart{
+@keyframes floatUp{
+0%{opacity:1; transform:translateY(0)}
+100%{opacity:0; transform:translateY(-80px)}
+}
+
+.gameHeart{
 position:absolute;
 font-size:60px;
-color:#ff4d6d;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh)}
-100%{transform:translateY(-10vh)}
-}
-
-/* typing story */
-
-#typing{
-font-size:22px;
-max-width:500px;
-min-height:150px;
-line-height:1.6;
-}
-
-/* mini game */
-
-#gameHeart{
-font-size:70px;
 cursor:pointer;
-position:absolute;
 }
 
-/* input */
-
-input{
-padding:12px;
-font-size:18px;
-border-radius:8px;
-border:none;
-width:250px;
+#proposal{
+font-size:36px;
+color:#ffb3d9;
 }
 
-#emotions{
+#cry{
+font-size:60px;
 margin-top:20px;
-font-size:20px;
-color:#ffd6d6;
-max-width:500px;
 }
-
-/* proposal ring */
-
-#ring{
-width:120px;
-opacity:0;
-transform:scale(0);
-transition:1s;
-}
-
-.showRing{
-opacity:1;
-transform:scale(1.5);
-}
-
-/* fireworks */
 
 canvas{
 position:fixed;
@@ -156,8 +106,8 @@ pointer-events:none;
 
 <body>
 
-<audio id="music" loop>
-<source src="song.mp3" type="audio/mpeg">
+<audio id="music" loop autoplay>
+<source src="song.mp3">
 </audio>
 
 <!-- PAGE 1 -->
@@ -168,69 +118,71 @@ pointer-events:none;
 <button onclick="start()">Start Surprise</button>
 </div>
 
-<!-- PAGE 2 STORY -->
+<!-- PAGE 2 PASSWORD -->
 
 <div class="page" id="p2">
 
-<h2>Our Story</h2>
+<h2>Enter the secret password 🔐</h2>
 
-<div id="typing"></div>
+<p>Hint: something I call you</p>
 
-<button class="next" onclick="next(3)">Next</button>
+<input id="pass">
+
+<button onclick="checkPass()">Unlock</button>
+
+<p id="passMsg"></p>
 
 </div>
 
-<!-- PAGE 3 MEMORIES -->
+<!-- PAGE 3 STORY -->
 
 <div class="page" id="p3">
 
-<h2>Our Memories ❤️</h2>
+<h2>Our Story ❤️</h2>
 
-<img id="slide" class="slide" src="photo1.jpeg">
+<div id="typing"></div>
 
-<button class="next" onclick="next(4)">Next</button>
+<button onclick="next(4)">Next</button>
 
 </div>
 
-<!-- PAGE 4 PHOTO -->
+<!-- PAGE 4 SLIDESHOW -->
 
 <div class="page" id="p4">
 
-<img src="hug.jpeg">
+<h2>Our Memories</h2>
 
-<h2>This was the moment I stopped looking for 'the one' and started realizing I’d already found you. A single frame that holds the beginning of my favorite forever. This moment was a lot to me ❤️</h2>
+<img id="slide" src="photo1.jpeg">
 
-<button class="next" onclick="next(5)">Next</button>
+<button onclick="next(5)">Next</button>
 
 </div>
 
-<!-- PAGE 5 GAME -->
+<!-- PAGE 5 HUG -->
 
 <div class="page" id="p5">
 
-<h2>Catch the heart ❤️</h2>
+<img src="hug.jpeg">
 
-<p>Every time you catch it, my love for you grows stronger 💗</p>
+<p style="max-width:520px;font-size:20px">
 
-<div id="gameHeart">💗</div>
+This was the moment I stopped looking for 'the one' and started realizing I’d already found you.  
+A single frame that holds the beginning of my favorite forever.  
+This moment was a lot to me ❤️
 
-<p id="score">Hearts collected: 0 / 5</p>
+</p>
+
+<button onclick="next(6)">Next</button>
 
 </div>
 
-<!-- PAGE 6 QUESTION -->
+<!-- PAGE 6 HEART GAME -->
 
 <div class="page" id="p6">
 
-<h2>A question from my heart ❤️</h2>
+<h2>Catch My Love Hearts 💗</h2>
 
-<p>Do you believe our love is meant to last forever?</p>
-
-<input id="answer" placeholder="type yes or no">
-
-<button onclick="checkAnswer()">Submit</button>
-
-<div id="emotions"></div>
+<p id="score">0 / 8</p>
 
 </div>
 
@@ -250,19 +202,36 @@ as you bring into my world every day. ❤️
 
 </p>
 
-<button class="next" onclick="next(8)">Next</button>
+<button onclick="next(8)">Next</button>
 
 </div>
 
-<!-- PAGE 8 FINAL PROPOSAL -->
+<!-- PAGE 8 QUESTION -->
 
 <div class="page" id="p8">
 
-<h1>Will you be mine forever? 💍</h1>
+<h2>A Question From My Heart ❤️</h2>
 
-<img id="ring" src="ring.avif">
+<p>Do you believe our love is meant forever?</p>
+
+<button onclick="answerYes()">YES ❤️</button>
+<button onclick="answerNo()">NO 🙈</button>
+
+<p id="emotion"></p>
+
+</div>
+
+<!-- PAGE 9 FINAL -->
+
+<div class="page" id="p9">
+
+<h1 id="proposal">Will you be mine forever? 💗</h1>
 
 <button onclick="yes()">YES ❤️</button>
+<button onclick="no()">NO 🙈</button>
+
+<div id="cry"></div>
+<p id="sadText"></p>
 
 </div>
 
@@ -277,225 +246,239 @@ document.getElementById("music").play();
 next(2);
 }
 
-/* page change */
-
 function next(n){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById("p"+n).classList.add("active");
+
+if(n==6) startGame();
 }
 
-/* romantic typing story */
+/* password */
 
-let text="We’ve walked side-by-side as friends for years, but these last few months have shown me what I was truly missing. Seeing you as my partner has turned my world into something magical, and I don't want to spend a single moment without you. It took us a while to get here, but now that I finally have you, I’m never letting go. I can’t wait to see where this new chapter takes us. ❤️";
+function checkPass(){
+
+let p=document.getElementById("pass").value;
+
+if(p==="mygoli"){
+next(3);
+}else{
+document.getElementById("passMsg").innerHTML="Wrong password ❤️ try again";
+}
+
+}
+
+/* typing story */
+
+let text="We’ve walked side-by-side as friends for years, but these last few months have shown me what I was truly missing. Seeing you as my partner has turned my world into something magical. I don't want a life where you aren't beside me.";
 
 let i=0;
 
 function type(){
-
 if(i<text.length){
-
-document.getElementById("typing").innerHTML+=text.charAt(i);
-
+document.getElementById("typing").innerHTML+=text[i];
 i++;
-
 setTimeout(type,40);
-
 }
-
 }
 
 type();
 
 /* slideshow */
 
-let photos=["photo1.jpeg","photo2.jpeg","photo3.jpeg","photo4.jpeg","photo5.jpeg","photo6.jpeg","photo7.jpeg","photo8.jpeg","photo9.jpeg","photo10.jpeg"];
+let photos=[
+"photo1.jpeg","photo2.jpeg","photo3.jpeg","photo4.jpeg","photo5.jpeg",
+"photo6.jpeg","photo7.jpeg","photo8.jpeg","photo9.jpeg","photo10.jpeg"
+];
 
 let index=0;
 
 setInterval(()=>{
-
 index=(index+1)%photos.length;
-
 document.getElementById("slide").src=photos[index];
-
 },2500);
 
-/* blinking hearts background */
+/* hearts background */
 
 setInterval(()=>{
-
-let heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="💗";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.top=Math.random()*100+"vh";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),2000);
-
+let h=document.createElement("div");
+h.className="bgHeart";
+h.innerHTML="💗";
+h.style.left=Math.random()*100+"vw";
+h.style.top=Math.random()*100+"vh";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),2000);
 },200);
 
-/* mini game */
-
-let heart=document.getElementById("gameHeart");
+/* heart game */
 
 let score=0;
 
-function moveHeart(){
+let loveMsgs=[
+"You make my world beautiful ❤️",
+"My heart beats for you 💓",
+"You are my happiness",
+"You are my forever",
+"You complete my world"
+];
+
+function startGame(){
+spawnHeart();
+}
+
+function spawnHeart(){
+
+let heart=document.createElement("div");
+heart.className="gameHeart";
+heart.innerHTML="💗";
 
 heart.style.left=Math.random()*80+"vw";
-
-heart.style.top=Math.random()*80+"vh";
-
-}
+heart.style.top=Math.random()*70+"vh";
 
 heart.onclick=function(){
 
 score++;
+document.getElementById("score").innerHTML=score+" / 8";
 
-document.getElementById("score").innerHTML="Hearts collected: "+score+" / 5";
+showLove(heart);
 
-moveHeart();
+heart.remove();
 
-if(score>=5){
+if(score>=8){
+setTimeout(()=>next(7),1000);
+}else{
+spawnHeart();
+}
 
-next(6);
+};
+
+document.body.appendChild(heart);
 
 }
 
+function showLove(heart){
+
+let msg=loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
+
+let text=document.createElement("div");
+text.className="loveText";
+
+text.innerHTML=msg;
+
+text.style.left=heart.style.left;
+text.style.top=heart.style.top;
+
+document.body.appendChild(text);
+
+setTimeout(()=>text.remove(),2000);
+
 }
 
-moveHeart();
+/* question page */
 
-/* emotional messages */
+function answerYes(){
+next(9);
+}
+
+function answerNo(){
 
 let msgs=[
-
-"Please don't say no... my heart truly belongs to you.",
-
-"I can't imagine my life without you.",
-
-"You are the reason my world feels complete.",
-
-"My love for you grows stronger every day.",
-
-"Please believe in our love ❤️"
-
+"Our story deserves forever ❤️",
+"My heart chose you",
+"Please believe in us"
 ];
-
-function checkAnswer(){
-
-let ans=document.getElementById("answer").value.toLowerCase();
-
-if(ans==="yes"){
-
-next(7);
-
-}else{
 
 let m=msgs[Math.floor(Math.random()*msgs.length)];
 
-document.getElementById("emotions").innerHTML+=m+"<br>";
+document.getElementById("emotion").innerHTML+=m+"<br>";
+
+}
+
+/* NO drama */
+
+let cryLevel=0;
+
+function no(){
+
+cryLevel++;
+
+let cry=document.getElementById("cry");
+let text=document.getElementById("sadText");
+
+if(cryLevel==1){
+
+cry.innerHTML="😢";
+text.innerHTML="That hurts...";
+
+}
+
+else if(cryLevel==2){
+
+cry.innerHTML="😭";
+text.innerHTML="Please don't break my heart";
+
+}
+
+else{
+
+cry.innerHTML="😭😭😭";
+text.innerHTML="Please Kajal... my heart truly belongs to you ❤️";
 
 }
 
 }
 
-/* proposal */
+/* YES ending */
 
 function yes(){
 
-document.getElementById("ring").classList.add("showRing");
+document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 
 startFireworks();
-
-bigHearts();
-
-}
-
-/* big hearts animation */
-
-function bigHearts(){
-
-setInterval(()=>{
-
-let h=document.createElement("div");
-
-h.className="bigHeart";
-
-h.innerHTML="💗";
-
-h.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(h);
-
-setTimeout(()=>h.remove(),6000);
-
-},300);
 
 }
 
 /* fireworks */
 
-let canvas=document.getElementById("fire");
+function startFireworks(){
 
+let canvas=document.getElementById("fire");
 let ctx=canvas.getContext("2d");
 
 canvas.width=window.innerWidth;
-
 canvas.height=window.innerHeight;
 
 let particles=[];
 
-function startFireworks(){
-
 setInterval(()=>{
 
-for(let i=0;i<120;i++){
+for(let i=0;i<150;i++){
 
 particles.push({
-
 x:canvas.width/2,
-
 y:canvas.height/2,
-
 vx:(Math.random()-0.5)*10,
-
 vy:(Math.random()-0.5)*10,
-
-life:100
-
+life:120
 });
 
 }
 
-},600);
-
-animate();
-
-}
+},700);
 
 function animate(){
 
 requestAnimationFrame(animate);
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(0,0,0,0.2)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
 particles.forEach(p=>{
 
 p.x+=p.vx;
-
 p.y+=p.vy;
-
 p.life--;
 
 ctx.fillStyle="pink";
-
 ctx.fillRect(p.x,p.y,3,3);
 
 });
@@ -504,8 +487,28 @@ particles=particles.filter(p=>p.life>0);
 
 }
 
+animate();
+
+setTimeout(()=>{
+
+let text=document.createElement("div");
+
+text.style.position="absolute";
+text.style.top="40%";
+text.style.width="100%";
+text.style.fontSize="60px";
+text.style.color="pink";
+text.style.textShadow="0 0 20px white";
+
+text.innerHTML="I LOVE YOU KAJAL ❤️";
+
+document.body.appendChild(text);
+
+},2000);
+
+}
+
 </script>
 
 </body>
 </html>
-
