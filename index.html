@@ -167,6 +167,7 @@ line-height:1.7;
 
 <div class="page" id="p2">
 <h2>Enter the secret password 🔐</h2>
+<p>Hint: something I call you</p>
 <input type="password" id="pass">
 <button onclick="checkPass()">Unlock</button>
 <p id="passMsg"></p>
@@ -295,7 +296,7 @@ function checkPass(){
 
 let p=document.getElementById("pass").value;
 
-if(p==="mygoli"){
+if(p==="babu"){
 next(3);
 }else{
 document.getElementById("passMsg").innerHTML="Wrong password ❤️";
